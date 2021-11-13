@@ -1,0 +1,68 @@
+{
+  "name": "@3fv/redis-cluster-monitor",
+  "version": "1.4.30",
+  "description": "Command line tool for monitoring all redis cluster nodes automagically.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "redis-cluster-monitor": "./bin/redis-cluster-monitor"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "yarn run build -- --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "preversion": "yarn build && yarn test",
+    "postversion": "./scripts/release.sh latest",
+    "release": "yarn build  && yarn version --patch --non-interactive"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "**/*.ts",
+    "**/*.js",
+    "**/*.map",
+    "bin/redis-cluster-monitor",
+    "package.json",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3fv/redis-cluster-monitor.git"
+  },
+  "keywords": [
+    "typescript",
+    "redis",
+    "cluster",
+    "monitor",
+    "cli"
+  ],
+  "author": "Jonathan Glanz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/3fv/redis-cluster-monitor/issues"
+  },
+  "homepage": "https://github.com/3fv/redis-cluster-monitor#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "ioredis":"^4.28.0",
+    "tracer": "^1.1.5",
+    "moment":"^2.29.1",
+    "yargs":"^17.2.1",
+    "debug":"^4.3.2"
+
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^16.11.7",
+    "@types/ioredis": "^4.28.1",
+    "@types/yargs": "^17.0.5",
+    "jest": "^27.3.1",
+    "ts-jest":"^27.0.7",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  }
+}
