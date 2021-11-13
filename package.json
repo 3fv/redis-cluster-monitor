@@ -1,6 +1,6 @@
 {
   "name": "@3fv/redis-cluster-monitor",
-  "version": "1.4.30",
+  "version": "1.0.0",
   "description": "Command line tool for monitoring all redis cluster nodes automagically.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
