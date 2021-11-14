@@ -1,12 +1,13 @@
+import Tracer from "tracer"
 import * as Yargs from "yargs"
 import { RedisClusterMonitor } from "./RedisClusterMonitor"
-import Tracer from "tracer"
 import {
   commandMonitorFilter,
+  RedisClusterMonitorFilter,
   regexMonitorFilter
 } from "./RedisClusterMonitorFilter"
+import type { RedisClusterMonitorOutputFormat } from "./RedisClusterMonitorOptions"
 import type { RedisCommand } from "./RedisCommand"
-import { RedisClusterMonitorFilter } from "."
 
 const log = Tracer.colorConsole()
 async function run() {
@@ -16,7 +17,13 @@ async function run() {
         "$0 [options]",
         "Monitor all redis cluster commands across all nodes."
       )
-
+      .option("format", {
+        alias: ["t"],
+        desc: "Command/argument filters as regex or a simple string",
+        choices: ["text", "json"] as RedisClusterMonitorOutputFormat[],
+        default: "text" as RedisClusterMonitorOutputFormat,
+        type: "string"
+      })
       .option("filter", {
         alias: ["f"],
         desc: "Command/argument filters as regex or a simple string",
@@ -44,6 +51,7 @@ async function run() {
   const {
     clusterConfigEndpoint,
     filter: filterArgs,
+    format: outputFormat,
     command: commandArgs
   } = argv
 
@@ -53,7 +61,7 @@ async function run() {
   ]
   const monitor = new RedisClusterMonitor(clusterConfigEndpoint, {
     filters,
-    commands: commandArgs
+    outputFormat
   })
 
   await monitor.start()
