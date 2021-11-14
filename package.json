@@ -1,6 +1,6 @@
 {
   "name": "@3fv/redis-cluster-monitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command line tool for monitoring all redis cluster nodes automagically.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,7 +12,7 @@
     "build:watch": "yarn run build -- --watch",
     "test": "jest",
     "test:watch": "jest --watch",
-    "preversion": "yarn build && yarn test",
+    "preversion": "yarn build",
     "postversion": "./scripts/release.sh latest",
     "release": "yarn build  && yarn version --patch --non-interactive"
   },
