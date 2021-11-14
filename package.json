@@ -45,24 +45,25 @@
   },
   "homepage": "https://github.com/3fv/redis-cluster-monitor#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
+    "completarr": "^0.2.2",
+    "debug": "^4.3.2",
+    "ioredis": "^4.28.0",
     "lodash": "^4.17.21",
-    "ioredis":"^4.28.0",
+    "moment": "^2.29.1",
     "tracer": "^1.1.5",
-    "moment":"^2.29.1",
-    "yargs":"^17.2.1",
-    "debug":"^4.3.2"
-
+    "yargs": "^17.2.1"
   },
   "devDependencies": {
+    "@types/ioredis": "^4.28.1",
     "@types/jest": "^24.0.23",
     "@types/lodash": "^4.14.149",
     "@types/node": "^16.11.7",
-    "@types/ioredis": "^4.28.1",
     "@types/yargs": "^17.0.5",
     "jest": "^27.3.1",
-    "ts-jest":"^27.0.7",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   }
 }
