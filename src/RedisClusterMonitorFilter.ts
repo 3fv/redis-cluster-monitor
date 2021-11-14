@@ -11,8 +11,8 @@ export type RedisClusterMonitorFilter = (
 ) => boolean
 
 
-export function regexMonitorFilter(pattern: RegExp | string):RedisClusterMonitorFilter {
-  const exp: RegExp = isString(pattern) ? new RegExp(pattern) : pattern
+export function regexMonitorFilter(pattern: RegExp | string, flags: string = "i"):RedisClusterMonitorFilter {
+  const exp: RegExp = isString(pattern) ? new RegExp(pattern,flags) : pattern
 
   return (
     time: number,

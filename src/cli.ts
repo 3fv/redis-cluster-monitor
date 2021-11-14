@@ -55,8 +55,8 @@ async function run() {
   } = argv
 
   const filters: Array<RedisClusterMonitorFilter> = [
-    ...filterArgs.map(regexMonitorFilter),
-    ...commandArgs.map(commandMonitorFilter)
+    ...filterArgs.map(pattern => regexMonitorFilter(pattern)),
+    ...commandArgs.map(cmd => commandMonitorFilter(cmd))
   ]
   const monitor = new RedisClusterMonitor(clusterConfigEndpoint, {
     filters,
