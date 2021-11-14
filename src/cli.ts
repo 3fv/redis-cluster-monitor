@@ -1,4 +1,5 @@
 import Tracer from "tracer"
+import "./cli-complete"
 import * as Yargs from "yargs"
 import { RedisClusterMonitor } from "./RedisClusterMonitor"
 import {
@@ -36,12 +37,10 @@ async function run() {
         desc: "One or more redis commands to filter for",
         array: true,
         default: [] as RedisCommand[]
-        // type: "string"
       })
       .option("clusterConfigEndpoint", {
         alias: ["h", "endpoint", "host"],
         desc: "Redis cluster config endpoint. example my-elastic-cache.amazonaws.com:6379",
-        // type: "string",
         string: true,
         demandOption: true
       })
