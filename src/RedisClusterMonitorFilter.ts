@@ -21,7 +21,7 @@ export function regexMonitorFilter(pattern: RegExp | string, flags: string = "i"
     source: string,
     database: string
   ) => {
-    return [cmd,...args.map(toString)].some(str => exp.test(str))
+    return [cmd,...args.map(s => s?.toString())].some(str => exp.test(str))
   }
 }
 
